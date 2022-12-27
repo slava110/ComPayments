@@ -1,0 +1,50 @@
+[versions]
+# Kotlin
+kotlin = "1.7.21"
+serialization_json = "1.4.1"
+serialization_hocon = "1.4.1"
+coroutines = "1.6.4"
+
+# Testing
+kotest = "5.5.4"
+
+# Logging
+logback = "1.3.5"
+
+# Server
+ktor = "2.2.1"
+cssdsl = "1.0.0-pre.459"
+ktor_kotest = "1.0.3"
+
+
+[libraries]
+serialization_json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization_json" }
+serialization_hocon = { module = "org.jetbrains.kotlinx:kotlinx-serialization-hocon", version.ref = "serialization_hocon" }
+
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+
+kotest = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+
+ktor_server_core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
+ktor_server_netty = { module = "io.ktor:ktor-server-netty", version.ref = "ktor" }
+
+ktor_server_auth = { module = "io.ktor:ktor-server-auth", version.ref = "ktor" }
+
+ktor_server_htmldsl = { module = "io.ktor:ktor-server-html-builder", version.ref = "ktor" }
+ktor_server_kotest = { module = "io.kotest.extensions:kotest-assertions-ktor", version.ref = "ktor_kotest" }
+
+cssdsl = { module = "org.jetbrains.kotlin-wrappers:kotlin-css", version.ref = "cssdsl" }
+
+
+[bundles]
+ktor_server = ["ktor_server_core", "ktor_server_netty", "ktor_server_htmldsl", "cssdsl"]
+ktor_server_kotest = ["kotest", "ktor_server_kotest"]
+
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
